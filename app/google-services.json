@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1090750901617",
+    "firebase_url": "https://easylibdos.firebaseio.com",
+    "project_id": "easylibdos",
+    "storage_bucket": "easylibdos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090750901617:android:03a7aa44fdec9b33",
+        "android_client_info": {
+          "package_name": "icesi.dmi.easylibdos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090750901617-73i64o00ujad7m5acl3pb6q4ijls7d0h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "icesi.dmi.easylibdos",
+            "certificate_hash": "9f6a0fb4986bf6b6e6e0627df469e608f063a95b"
+          }
+        },
+        {
+          "client_id": "1090750901617-0brd6rlj7kp88j0qiv139fj9o7lmlrj5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7EMLTYt0DUeD4M16gd9jNtFHk13UA3no"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090750901617-0brd6rlj7kp88j0qiv139fj9o7lmlrj5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
