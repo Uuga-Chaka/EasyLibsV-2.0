@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class Profile extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth firebaseAuth;
+    FirebaseUser user;
     private TextView tv_userName, tv_email;
     private Button btn_logout;
 
@@ -23,13 +24,12 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        if(firebaseAuth.getCurrentUser() == null){
+        if (firebaseAuth.getCurrentUser() == null) {
             finish();
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
 
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-
+        user = firebaseAuth.getCurrentUser();
 
 
         tv_email = (TextView) findViewById(R.id.tv_email);
@@ -43,7 +43,18 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
+    protected void onStart() {
+        super.onStart();
 
+        if (firebaseAuth.getCurrentUser() == null) {
+            finish();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == btn_logout)
+            firebaseAuth.signOut();
     }
 }
