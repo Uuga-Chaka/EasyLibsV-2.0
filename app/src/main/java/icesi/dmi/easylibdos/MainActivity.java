@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     //Botonos & campos de texto
     Button btn_login,btn_register;
     EditText et_email,et_password;
-    TextView tv_map;
+    TextView tv_register;
 
     //Base de datos
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
             updateUI(currentUser);
         }
         btn_login = (Button) findViewById(R.id.btn_login);
-        tv_map = (TextView) findViewById(R.id.btn_mapa);
+        tv_register = (TextView) findViewById(R.id.btn_register);
 
         btn_login.setOnClickListener(this);
-        tv_map.setOnClickListener(this);
+        tv_register.setOnClickListener(this);
 
         et_email = (EditText) findViewById(R.id.et_email);
         et_password = (EditText) findViewById(R.id.et_password);
@@ -65,17 +65,15 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
             loginUser();
         }
 
-        if(v == btn_register){
-           // registerUser();
-        }
-
-        if(v == tv_map){
-            goToMap();
+        if(v == tv_register){
+           registerUser();
         }
     }
 
     private void registerUser() {
-
+        //Toast.makeText(MainActivity.this,"Funciona",Toast.LENGTH_LONG).show();
+       // finish();
+        startActivity(new Intent(this,Register.class));
     }
 
     private void goToMap() {

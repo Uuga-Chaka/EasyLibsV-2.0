@@ -9,76 +9,66 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:scaleX="1.5"
         android:scaleY="1.5"
         android:src="@mipmap/ic_logo" />
 
     <EditText
-        android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:layout_marginTop="100sp"
+        android:drawablePadding="10sp"
         android:drawableStart="@drawable/ic_user"
-        android:fontFamily="@font/nunito"
-        android:hint="Identificacion"
-        android:inputType="textEmailAddress"
-        android:padding="15dp"
-        android:letterSpacing="0.1"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/hintColor"
-        android:drawablePadding="10sp"/>
-
-    <EditText
-        android:id="@+id/et_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:drawableStart="@drawable/ic_password"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
         android:letterSpacing=".1"
         android:padding="15dp"
-        android:textColorHint="@color/hintColor"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:id="@+id/et_email"
         android:textColor="@color/colorAccent"
-        android:drawablePadding="10sp"/>
+        android:textColorHint="@color/hintColor" />
+
+    <EditText
+        android:inputType="textPassword"
+        android:id="@+id/et_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:drawablePadding="10sp"
+        android:drawableStart="@drawable/ic_password"
+        android:letterSpacing=".1"
+        android:padding="15dp"
+        android:hint="Contraseña"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/hintColor" />
+
+    <EditText
+        android:inputType="textPassword"
+        android:id="@+id/et_repass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:drawablePadding="10sp"
+        android:drawableStart="@drawable/ic_password"
+        android:letterSpacing=".1"
+        android:padding="15dp"
+        android:hint="Repetir contraseña"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/hintColor" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_registe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/btn_selector"
+        android:fontFamily="@font/nunito_extrabold"
         android:padding="15dp"
-        android:text="ingresar"
-        android:textColor="@color/indentityColorTwo"
-        android:fontFamily="@font/nunito_extrabold"/>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:paddingTop="80dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No tengo cuenta."
-            android:textColor="@color/colorAccent"/>
-
-        <TextView
-            android:id="@+id/btn_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Registrame"
-            android:fontFamily="@font/nunito_extrabold"
-            android:textColor="@color/colorAccent"/>
-    </LinearLayout>
-
+        android:text="registrarme"
+        android:textColor="@color/indentityColorTwo" />
 </LinearLayout>
