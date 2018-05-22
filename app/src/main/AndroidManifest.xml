@@ -22,8 +22,12 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".Profile" />
-        <activity android:name=".Register"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".Register"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Map">
+
+        </activity>
     </application>
 
 </manifest>
