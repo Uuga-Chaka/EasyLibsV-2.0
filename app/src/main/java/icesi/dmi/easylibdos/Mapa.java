@@ -6,70 +6,66 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
+
 import java.util.ArrayList;
 
-public class Mapa extends View implements View.OnTouchListener{
+public class Mapa extends View {
 
+    private ArrayList<Silla> sillas;
     Paint p;
-    ArrayList<Lugar> lugares;
-
     int x = Resources.getSystem().getDisplayMetrics().widthPixels;
     int y = Resources.getSystem().getDisplayMetrics().heightPixels;
 
+
     public Mapa(Context context) {
         super(context);
-        lugares = new ArrayList<>();
         p = new Paint();
-        setOnTouchListener(this);
     }
 
     public Mapa(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        lugares = new ArrayList<>();
+        sillas = new ArrayList<>();
         p = new Paint();
-        setOnTouchListener(this);
     }
 
     public Mapa(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        lugares = new ArrayList<>();
+        sillas = new ArrayList<>();
         p = new Paint();
-        setOnTouchListener(this);
     }
 
     public Mapa(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        lugares = new ArrayList<>();
+        sillas = new ArrayList<>();
         p = new Paint();
-        setOnTouchListener(this);
     }
 
-    public void addingPlaces(){
+
+    public void addSilla() {
         for (int i = 0; i < 20; i++) {
-            float ranx = (float) (Math.random() * x);
-            float rany = (float) (Math.random() * y);
-            int ranc = (int) Math.random() * 4;
+            float rx = (float) Math.random() * x;
+            float ry = (float) Math.random() * y;
 
-            Lugar lugar = new Lugar(this.p, (int)ranx, (int)rany,i);
-            lugar.setEstado(lugar.LIBRE);
-            lugares.add(lugar);
-            Log.e("Pos",ranx+" "+rany);
+            Silla silla = new Silla((int) rx, (int) ry);
+            invalidate();
+            sillas.add(silla);
         }
     }
 
     @Override
-    public void draw(Canvas canvas) {
-        super.draw(canvas);
-        for(int i=0; i< lugares.size();i++){
-            lugares.get(i).rectangle(canvas);
+    protected void onDraw(Canvas canvas) {
+        for (int i = 0; i < sillas.size(); i++) {
+            sillas.get(i).draw(canvas);
         }
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
+    public boolean validate(float posX, float posY) {
+        for (int i = 0; i < sillas.size(); i++) {
+            if (sillas.get(i).validate(posX, posY)) {
+                return true;
+            }
+        }
         return false;
     }
 }
