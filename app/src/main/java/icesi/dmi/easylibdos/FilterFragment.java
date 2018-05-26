@@ -17,7 +17,7 @@ import android.widget.Spinner;
  */
 public class FilterFragment extends Fragment {
 
-    Spinner personas, tipo;
+    Spinner s_personas, s_tipo;
 
     String[] persona = {"1", "2", "3", "4"};
     ArrayAdapter<String> adapter;
@@ -31,10 +31,22 @@ public class FilterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View rootView = inflater.inflate(R.layout.fragment_filter, container, false);
+
+        s_personas = rootView.findViewById(R.id.spin_people);
+        s_tipo = rootView.findViewById(R.id.spin_tipo);
+
+        String[] cantidad = new String[]{"1","2","3","4"};
+        String[] items = new String[]{ "Office", "Home", "College", "Uncle's Home", "CoDebuggers"};
+        ArrayAdapter<String> item = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, items);
+        ArrayAdapter<String> cantidades = new ArrayAdapter<>(getContext(),android.R.layout.simple_spinner_dropdown_item,cantidad);
+        s_personas.setAdapter(item);
+        s_tipo.setAdapter(cantidades);
+
 
         //Goone
-        return inflater.inflate(R.layout.fragment_filter, container, false);
 
+        return  rootView;
     }
 
 }

@@ -7,6 +7,7 @@
     <color name="indentityColorOne">#a795e9</color>
     <color name="indentityColorTwo">#82a2d3</color>
     <color name="hintColor">#cbe0ea</color>
+    <color name="inputColor">#8b9aa3</color>
 
     <integer-array name="androidcolors">
         <item>@color/colorClick</item>

@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/main_frame"
-        android:layout_above="@id/main_nav"></FrameLayout>
+        android:layout_above="@id/main_nav"/>
 
     <android.support.design.widget.BottomNavigationView
         android:layout_width="match_parent"
@@ -19,6 +19,8 @@
         app:menu="@menu/items"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:background="@color/indentityColorOne"></android.support.design.widget.BottomNavigationView>
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        android:background="@color/indentityColorOne"/>
 
 </RelativeLayout>

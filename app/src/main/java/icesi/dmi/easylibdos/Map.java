@@ -14,16 +14,17 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Map extends AppCompatActivity implements View.OnTouchListener {
 
     private BottomNavigationView mMainNav;
     private FrameLayout mMainFram;
     private Mapa mapa;
-    FirebaseDatabase db = FirebaseDatabase.getInstance();
-    DatabaseReference getRef = db.getReference();
 
     //Fragmentos
     MapFragment mapFragment;
@@ -46,7 +47,8 @@ public class Map extends AppCompatActivity implements View.OnTouchListener {
         notifyFragment = new NotifyFragment();
         filterFragment = new FilterFragment();
 
-        setFragment(mapFragment);
+
+        setFragment(userFragment);
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -68,13 +70,6 @@ public class Map extends AppCompatActivity implements View.OnTouchListener {
                 }
             }
         });
-
-
-        //mapa = findViewById(R.id.mapa);
-        for (int i = 0; i < 20; i++) {
-            //   mapa.addSilla(Map.this);
-        }
-        // mapa.setOnTouchListener(this);
         Log.e("Syso", "Something has been clicked");
     }
 
@@ -86,18 +81,6 @@ public class Map extends AppCompatActivity implements View.OnTouchListener {
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-      /*  if (v.getId() == R.id.mapa) {
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    if (mapa.validate(event.getX(), event.getY()))
-                        Toast.makeText(Map.this, "Something has been clicked", Toast.LENGTH_LONG).show();
-                    break;
-                case MotionEvent.ACTION_UP:
-                    v.performClick();
-                    break;
-
-            }
-        }*/
         return true;
     }
 }

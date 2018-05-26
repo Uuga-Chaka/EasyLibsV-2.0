@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
     private void updateUI(FirebaseUser currentUser) {
             finish();
-            startActivity(new Intent(getApplicationContext(),Profile.class));
+            startActivity(new Intent(getApplicationContext(),Map.class));
     }
 
     @Override

@@ -14,49 +14,54 @@
         android:src="@mipmap/ic_logo" />
 
     <EditText
+        android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginTop="100sp"
+        android:background="@drawable/rounded_button"
         android:drawablePadding="10sp"
         android:drawableStart="@drawable/ic_user"
-        android:letterSpacing=".1"
-        android:padding="15dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:id="@+id/et_email"
-        android:textColor="@color/colorAccent"
+        android:letterSpacing=".1"
+        android:padding="7dp"
+        android:textColor="@color/inputColor"
         android:textColorHint="@color/hintColor" />
 
     <EditText
-        android:inputType="textPassword"
         android:id="@+id/et_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_button"
         android:drawablePadding="10sp"
         android:drawableStart="@drawable/ic_password"
-        android:letterSpacing=".1"
-        android:padding="15dp"
         android:hint="Contraseña"
-        android:textColor="@color/colorAccent"
+        android:inputType="textPassword"
+        android:letterSpacing=".1"
+        android:padding="7dp"
+        android:textColor="@color/inputColor"
         android:textColorHint="@color/hintColor" />
 
     <EditText
-        android:inputType="textPassword"
         android:id="@+id/et_repass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_button"
         android:drawablePadding="10sp"
         android:drawableStart="@drawable/ic_password"
-        android:letterSpacing=".1"
-        android:padding="15dp"
         android:hint="Repetir contraseña"
-        android:textColor="@color/colorAccent"
+        android:inputType="textPassword"
+        android:letterSpacing=".1"
+        android:padding="7dp"
+        android:textColor="@color/inputColor"
         android:textColorHint="@color/hintColor" />
 
     <Button
@@ -70,5 +75,6 @@
         android:fontFamily="@font/nunito_extrabold"
         android:padding="15dp"
         android:text="registrarme"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:textColor="@color/indentityColorTwo" />
 </LinearLayout>

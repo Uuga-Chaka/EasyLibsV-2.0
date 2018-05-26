@@ -10,6 +10,23 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:fontFamily="@font/nunito_extrabold"
+            android:text="Buscar"
+            android:textSize="45sp"
+            android:textColor="@color/colorAccent"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="40dp"
+            android:text="Actividad"
+            android:textColor="@color/colorAccent"/>
 
         <Spinner
             android:id="@+id/spin_people"
@@ -17,16 +34,26 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_selector" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="25dp"
             android:layout_marginTop="40dp"
-            android:background="@color/colorClick" />
+            android:text="Cantidad de personas"
+            android:textColor="@color/colorAccent"/>
+
         <Spinner
             android:id="@+id/spin_tipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/colorClick"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_selector" />
 
         <Button
             android:id="@+id/btn_find"
