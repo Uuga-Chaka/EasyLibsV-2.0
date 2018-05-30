@@ -17,6 +17,7 @@ public class Mapa extends View {
     Paint p;
     int x = Resources.getSystem().getDisplayMetrics().widthPixels;
     int y = Resources.getSystem().getDisplayMetrics().heightPixels;
+    Silla refSilla;
 
 
     public Mapa(Context context) {
@@ -56,22 +57,23 @@ public class Mapa extends View {
         }
     }
 
-    public String validate(float posX, float posY) {
-
-
+    public boolean validate(float posX, float posY) {
         for (int i = 0; i < sillas.size(); i++) {
             if (sillas.get(i).validate(posX, posY)) {
-                return sillas.get(i).getId();
+                refSilla = sillas.get(i);
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
-    public Silla getSilla(float posx, float posy) {
-        for (int i = 0; i < sillas.size(); i++)
-            if (sillas.get(i).validate(posx, posy))
-                return sillas.get(i);
-        return null;
+    public Silla getSilla(){
+        return refSilla;
+    }
+
+
+    public void clearSilla(){
+        sillas.clear();
     }
 
     public String getId(float posX, float posY) {

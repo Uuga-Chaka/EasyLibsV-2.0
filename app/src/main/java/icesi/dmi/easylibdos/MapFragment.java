@@ -26,6 +26,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
     private Mapa mapa;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference ref = db.getReference().child("Bibliotech").child("Universidades").child("Icesi");
+    Coordenada refCoordenada;
 
     public MapFragment() {
         // Required empty public constructor
@@ -49,12 +50,13 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                mapa.clearSilla();
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    Coordenada coordenada = child.getValue(Coordenada.class);
-                    int x = coordenada.getX();
-                    int y = coordenada.getY();
-                    String id = coordenada.getId();
-                    int s = coordenada.getState();
+                    refCoordenada = child.getValue(Coordenada.class);
+                    int x = refCoordenada.getX();
+                    int y = refCoordenada.getY();
+                    String id = refCoordenada.getId();
+                    int s = refCoordenada.getState();
                     mapa.addSilla(x, y, id, s);
                 }
             }
@@ -72,10 +74,17 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
         if (v.getId() == R.id.mapita) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-
-                    Toast.makeText(getContext(), "Something has been clicked: "+mapa.getSilla(event.getX(), event.getY()).getId(), Toast.LENGTH_LONG).show();
-                    goTo(mapa.getSilla(event.getX(), event.getY()).getId());
-                    return true;
+                    if (mapa.validate(event.getX(), event.getY())) {
+                        String id = mapa.getSilla().getId().trim();
+                        if(id.equals(ref.child(id).getKey())){
+                            Toast.makeText(getContext(), "Working on: " + id, Toast.LENGTH_LONG).show();
+                        }
+                        Intent intent = new Intent(getActivity(), Reserva.class);
+                        intent.putExtra("id", id);
+                        startActivity(intent);
+                        return true;
+                    }
+                    return false;
                 case MotionEvent.ACTION_UP:
                     v.performClick();
                     return true;
@@ -85,8 +94,8 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
     }
 
     public void goTo(String id) {
-        Intent intent = new Intent(getActivity(), Reserva.class);
-        intent.putExtra("id", id);
-        startActivity(intent);
+        //Intent intent = new Intent(getActivity(), Reserva.class);
+        //intent.putExtra("id", id);
+        //startActivity(intent);
     }
 }

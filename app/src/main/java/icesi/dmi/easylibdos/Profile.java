@@ -15,7 +15,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth firebaseAuth;
     FirebaseUser user;
     private TextView tv_userName, tv_email;
-    private Button btn_logout;
+    private Button btn_logout,btn_reserva;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         tv_userName = (TextView) findViewById(R.id.tv_username);
 
         btn_logout = (Button) findViewById(R.id.btn_logout);
+        btn_reserva = (Button) findViewById(R.id.btn_reserva);
 
         btn_logout.setOnClickListener(this);
 
@@ -56,5 +57,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         if (v == btn_logout)
             firebaseAuth.signOut();
+        if(v == btn_reserva){
+            startActivity(new Intent(Profile.this,ReservaAhora.class));
+        }
     }
 }

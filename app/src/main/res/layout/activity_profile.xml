@@ -29,12 +29,9 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="map" />
+            android:text="Reservar ahora"
+            android:id="@+id/btn_reserva"/>
 
-        <Button
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:text="Need some place to study" />
 
         <Button
             android:layout_width="250dp"

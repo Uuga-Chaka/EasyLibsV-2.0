@@ -26,7 +26,8 @@
             android:name=".Register"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Map" />
-        <activity android:name=".Reserva"></activity>
+        <activity android:name=".Reserva" />
+        <activity android:name=".ReservaAhora"></activity>
     </application>
 
 </manifest>

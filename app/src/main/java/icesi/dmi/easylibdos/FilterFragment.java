@@ -38,7 +38,7 @@ public class FilterFragment extends Fragment {
 
         String[] cantidad = new String[]{"1","2","3","4"};
         String[] items = new String[]{ "Office", "Home", "College", "Uncle's Home", "CoDebuggers"};
-        ArrayAdapter<String> item = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, items);
+        ArrayAdapter<String> item = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, items);
         ArrayAdapter<String> cantidades = new ArrayAdapter<>(getContext(),android.R.layout.simple_spinner_dropdown_item,cantidad);
         s_personas.setAdapter(item);
         s_tipo.setAdapter(cantidades);
