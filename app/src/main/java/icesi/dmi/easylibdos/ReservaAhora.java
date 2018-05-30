@@ -23,7 +23,7 @@ public class ReservaAhora extends AppCompatActivity {
 
         btn_reserva = (Button) findViewById(R.id.btn_reserva);
 
-        
+       // btn_reserva.addOn
 
         String uid = user.getUid();
         ref.child(uid);
