@@ -32,8 +32,8 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
     Coordenada refCoordenada;
 
     //posiciones random para poder poblar el mapa
-    //int x = Resources.getSystem().getDisplayMetrics().widthPixels;
-    //int y = Resources.getSystem().getDisplayMetrics().heightPixels;
+    /* int x = Resources.getSystem().getDisplayMetrics().widthPixels;
+    int y = Resources.getSystem().getDisplayMetrics().heightPixels;*/
 
 
     public MapFragment() {
@@ -59,7 +59,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
             float xx = (float)Math.random()* x;
             float yy = (float)Math.random()* y;
 
-            Coordenada c = new Coordenada((int)xx,(int)yy,0, String.valueOf(i));
+            Coordenada c = new Coordenada((int)xx,(int)yy,0, String.valueOf(i),false);
             ref.child(String.valueOf(i)).setValue(c);
         }*/
 
