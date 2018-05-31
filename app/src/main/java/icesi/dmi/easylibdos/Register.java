@@ -24,13 +24,18 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     EditText et_email, et_pass, et_repass;
     Button btn_register;
+
+    //Conexion a database
     FirebaseDatabase db = FirebaseDatabase.getInstance();
+    //Ruta para registar la actividad de los usuarios
     DatabaseReference ref = db.getReference().child("Bibliotech").child("Users").child("Icesi");
+
+    //Regex para validar el correo
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     FirebaseAuth mAuth;
-    FirebaseUser currentUser = mAuth.getCurrentUser();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             String email = et_email.getText().toString().trim();
             String password = et_pass.getText().toString().trim();
             String repass = et_repass.getText().toString().trim();
+
+            //Validaciones para que sea más fácil saber cuales fueron sus errores y se arrepienta
 
             if (email.isEmpty()) {
                 Toast.makeText(Register.this, "El correo está vacio", Toast.LENGTH_LONG).show();
@@ -86,22 +93,31 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 return;
             }
 
-            Toast.makeText(Register.this, email, Toast.LENGTH_LONG).show();
+            //Toast.makeText(Register.this, email, Toast.LENGTH_LONG).show();
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        String UID = currentUser.getUid();
-                        User us = new User(UID, false);
-                        ref.child(UID).setValue(us);
+                        // Toast.makeText(Register.this, task.getResult().getUser().getUid(), Toast.LENGTH_LONG).show();
+                        FirebaseUser fbUser = task.getResult().getUser();
+                        String uid = fbUser.getUid();
+                        User us = new User();
+                        us.hasBooking = false;
+                        us.uid = uid;
+                        ref.child(uid).setValue(us);
+                        startActivity(new Intent(Register.this, MainActivity.class));
                         finish();
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     } else {
                         Toast.makeText(Register.this, "Not good", Toast.LENGTH_LONG).show();
                     }
                 }
             });
         }
+    }
+
+    public void addUserToDataBase(String uid) {
+        //startActivity(new Intent(Register.this, MainActivity.class));
+        //finish();
     }
 
     public static boolean validate(String emailStr) {

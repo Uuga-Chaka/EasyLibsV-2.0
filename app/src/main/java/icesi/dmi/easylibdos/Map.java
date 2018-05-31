@@ -1,7 +1,5 @@
 package icesi.dmi.easylibdos;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -11,20 +9,15 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import java.util.Calendar;
 
 public class Map extends AppCompatActivity implements View.OnTouchListener {
 
     private BottomNavigationView mMainNav;
     private FrameLayout mMainFram;
     private Mapa mapa;
+
+
 
     //Fragmentos
     MapFragment mapFragment;

@@ -41,17 +41,17 @@ public class Reserva extends AppCompatActivity {
                 String color;
                 Coordenada coordenada = dataSnapshot.getValue(Coordenada.class);
 
-                if (coordenada.getState() == 0) {
+                if (coordenada.state == 0) {
                     color = "Libre";
                 }
-                else if (coordenada.getState() == 1) {
+                else if (coordenada.state == 1) {
                     color = "Ocupado";
                 }
                 else {
                     color = "Reservado";
                 }
                 tv_status.setText(color);
-                tv_id.setText(coordenada.getId());
+                tv_id.setText(coordenada.ids);
             }
 
             @Override

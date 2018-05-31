@@ -2,6 +2,7 @@ package icesi.dmi.easylibdos;
 
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +30,11 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference ref = db.getReference().child("Bibliotech").child("Universidades").child("Icesi");
     Coordenada refCoordenada;
+
+    //posiciones random para poder poblar el mapa
+    //int x = Resources.getSystem().getDisplayMetrics().widthPixels;
+    //int y = Resources.getSystem().getDisplayMetrics().heightPixels;
+
 
     public MapFragment() {
         // Required empty public constructor
@@ -46,6 +54,15 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
 
         mapa.setOnTouchListener(this);
 
+        //poblar mapa con posiciones random
+        /*for(int i = 0; i<20;i++){
+            float xx = (float)Math.random()* x;
+            float yy = (float)Math.random()* y;
+
+            Coordenada c = new Coordenada((int)xx,(int)yy,0, String.valueOf(i));
+            ref.child(String.valueOf(i)).setValue(c);
+        }*/
+
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -53,10 +70,10 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
                 mapa.clearSilla();
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     refCoordenada = child.getValue(Coordenada.class);
-                    int x = refCoordenada.getX();
-                    int y = refCoordenada.getY();
-                    String id = refCoordenada.getId();
-                    int s = refCoordenada.getState();
+                    int x = refCoordenada.x;
+                    int y = refCoordenada.y;
+                    String id = refCoordenada.ids;
+                    int s = refCoordenada.state;
                     mapa.addSilla(x, y, id, s);
                 }
             }
@@ -76,7 +93,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
                 case MotionEvent.ACTION_DOWN:
                     if (mapa.validate(event.getX(), event.getY())) {
                         String id = mapa.getSilla().getId().trim();
-                        if(id.equals(ref.child(id).getKey())){
+                        if (id.equals(ref.child(id).getKey())) {
                             Toast.makeText(getContext(), "Working on: " + id, Toast.LENGTH_LONG).show();
                         }
                         Intent intent = new Intent(getActivity(), Reserva.class);
@@ -91,11 +108,5 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
             }
         }
         return false;
-    }
-
-    public void goTo(String id) {
-        //Intent intent = new Intent(getActivity(), Reserva.class);
-        //intent.putExtra("id", id);
-        //startActivity(intent);
     }
 }

@@ -19,8 +19,7 @@ public class FilterFragment extends Fragment {
 
     Spinner s_personas, s_tipo;
 
-    String[] persona = {"1", "2", "3", "4"};
-    ArrayAdapter<String> adapter;
+
 
     public FilterFragment() {
         // Required empty public constructor
