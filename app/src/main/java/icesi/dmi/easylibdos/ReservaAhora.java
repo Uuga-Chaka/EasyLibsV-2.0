@@ -18,6 +18,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class ReservaAhora extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
@@ -64,7 +68,6 @@ public class ReservaAhora extends AppCompatActivity {
                 us = dataSnapshot.getValue(User.class);
 
                 hasBooking = us.hasBooking;
-
             }
 
             @Override
@@ -77,12 +80,16 @@ public class ReservaAhora extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Calendar calendar = GregorianCalendar.getInstance();
+                Date date = new Date();
+                calendar.setTime(date);
+
                 Coordenada c = new Coordenada();
 
                 if (!hasBooking) {
                     //Puede reservar
-                    int in = Integer.parseInt(et_inicio.getText().toString());
-                    int fi = Integer.parseInt(et_final.getText().toString());
+                    int in = Calendar.HOUR_OF_DAY ;
+                    int fi = in + 2;
                     if ((fi - in) < 0) {
                         Toast.makeText(ReservaAhora.this, "La hora de inicio no puede ser mayor a la final", Toast.LENGTH_LONG).show();
                         return;
@@ -108,7 +115,6 @@ public class ReservaAhora extends AppCompatActivity {
                 } else {
                     //no puede reservar
                     Toast.makeText(ReservaAhora.this, "Actualmente tiene una reserva activa", Toast.LENGTH_LONG).show();
-
                 }
             }
         });

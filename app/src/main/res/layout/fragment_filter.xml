@@ -15,9 +15,9 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:fontFamily="@font/nunito_extrabold"
-            android:text="Buscar"
+            android:text="Filtro"
             android:textSize="45sp"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/textoTitulo"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:layout_marginRight="25dp"
             android:layout_marginTop="40dp"
             android:text="Actividad"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/textoTitulo"/>
 
         <Spinner
             android:id="@+id/spin_people"
@@ -35,38 +35,68 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/btn_selector" />
+            android:background="@drawable/input_style" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="25dp"
-            android:layout_marginTop="40dp"
-            android:text="Cantidad de personas"
-            android:textColor="@color/colorAccent"/>
+            android:layout_marginTop="20dp"
+            android:text="Hora de inicio"
+            android:textColor="@color/textoTitulo" />
 
-        <Spinner
-            android:id="@+id/spin_tipo"
+        <EditText
+            android:id="@+id/et_inicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/btn_selector" />
+            android:background="@drawable/input_style"
+            android:hint="Hora"
+            android:inputType="number"
+            android:letterSpacing=".1"
+            android:padding="10dp"
+            android:textColor="@color/hintColor"
+            android:textColorHint="@color/inputColor" />
 
-        <Button
-            android:id="@+id/btn_find"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            android:text="Hora de finalización"
+            android:textColor="@color/textoTitulo" />
+
+        <EditText
+            android:id="@+id/et_fin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/input_style"
+            android:hint="Hora"
+            android:inputType="number"
+            android:letterSpacing=".1"
+            android:padding="10dp"
+            android:textColor="@color/hintColor"
+            android:textColorHint="@color/inputColor" />
+
+
+        <Button
+            android:id="@+id/btn_find"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:background="@drawable/btn_selector"
             android:fontFamily="@font/nunito_extrabold"
-            android:padding="15dp"
-            android:text="Buscar"
-            android:textColor="@color/indentityColorTwo" />
+            android:paddingRight="35dp"
+            android:paddingLeft="35dp"
+            android:text="filtrar"
+            android:textColor="@color/nav_item_color" />
     </LinearLayout>
 
 </FrameLayout>

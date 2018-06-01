@@ -22,7 +22,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private FirebaseAuth firebaseAuth;
     FirebaseUser user;
     private TextView tv_userName, tv_email;
-    private Button btn_logout, btn_reserva;
+    private Button btn_logout;
 
 
 
@@ -54,10 +54,8 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         tv_userName = (TextView) root.findViewById(R.id.tv_username);
 
         btn_logout = (Button) root.findViewById(R.id.btn_logout);
-        btn_reserva = (Button) root.findViewById(R.id.btn_reserva);
 
         btn_logout.setOnClickListener(this);
-        btn_reserva.setOnClickListener(this);
 
         tv_email.setText(user.getEmail());
         return root;
@@ -68,9 +66,6 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         if (v == btn_logout) {
             firebaseAuth.signOut();
             startActivity(new Intent(getActivity(), MainActivity.class));
-        }
-        if (v == btn_reserva) {
-            startActivity(new Intent(getActivity(), ReservaAhora.class));
         }
     }
 

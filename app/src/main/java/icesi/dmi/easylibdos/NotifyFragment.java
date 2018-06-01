@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +57,9 @@ public class NotifyFragment extends Fragment {
     Thread t;
 
     Coordenada c;
+    User us;
+
+    Button btn_terminar;
 
 
 //    int timeToFinal = currentTime-time needed;
@@ -76,11 +80,13 @@ public class NotifyFragment extends Fragment {
         tv_timer = root.findViewById(R.id.tv_timer);
         tv_text = root.findViewById(R.id.tv_text);
 
+        btn_terminar = root.findViewById(R.id.btn_terminar);
+
         //iniializar la base de datos y autentificacion
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
-        hasBooking = false;
+        //hasBooking = false;
         reservaStarted = false;
         horaFaltante = 0;
         minReserva = 0;
@@ -107,14 +113,17 @@ public class NotifyFragment extends Fragment {
                         c.state = 0;
                         c.inicio = 0;
                         c.fin = 0;
+                        us.fin = 0;
+                        us.inicio = 0;
+                        us.hasBooking = false;
                         lib.setValue(c);
+                        userdb.setValue(us);
                     }
 
 
                     if (!reservaStarted) {
                         horaFaltante = horaInicio - calendar.get(Calendar.HOUR_OF_DAY);
                         minReserva = 60 - calendar.get(Calendar.MINUTE);
-                        prueba++;
                         reservaStarted = true;
                         tv_text.setText("Tu reserva empieza en:");
                     } else {
@@ -147,11 +156,11 @@ public class NotifyFragment extends Fragment {
         userdb.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                horaInicio = user.inicio;
-                horaTerminacion = user.fin;
-                hasBooking = user.hasBooking;
-                lugar = user.lugar;
+                us = dataSnapshot.getValue(User.class);
+                horaInicio = us.inicio;
+                horaTerminacion = us.fin;
+                hasBooking = us.hasBooking;
+                lugar = us.lugar;
             }
 
             @Override
@@ -160,8 +169,9 @@ public class NotifyFragment extends Fragment {
             }
         });
 
+        Toast.makeText(getContext(), String.valueOf(hasBooking), Toast.LENGTH_LONG).show();
+
         if (hasBooking) {
-            Toast.makeText(getContext(),"hasBooking",Toast.LENGTH_LONG).show();
             lib = db.getReference().child("Bibliotech").child("Universidades").child("Icesi").child(lugar);
             lib.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -172,6 +182,22 @@ public class NotifyFragment extends Fragment {
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 
+                }
+            });
+
+            btn_terminar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    c.hasReserva = false;
+                    c.state = 0;
+                    c.inicio = 0;
+                    c.fin = 0;
+                    us.fin = 0;
+                    us.inicio = 0;
+                    us.hasBooking = false;
+                    lib.setValue(c);
+                    userdb.setValue(us);
+                    Toast.makeText(getActivity(), "Funca el click", Toast.LENGTH_LONG).show();
                 }
             });
         }

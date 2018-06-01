@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         >
         <TextView
             android:layout_width="match_parent"
@@ -24,6 +25,19 @@
             android:textSize="35sp"
             android:text="Timer"
             android:id="@+id/tv_timer"/>
+
+        <Button
+            android:id="@+id/btn_terminar"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/btn_selector"
+            android:fontFamily="@font/nunito_extrabold"
+            android:paddingRight="35dp"
+            android:paddingLeft="35dp"
+            android:text="Terminar"
+            android:textColor="@color/nav_item_color" />
 
     </LinearLayout>
 </FrameLayout>

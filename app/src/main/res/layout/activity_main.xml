@@ -60,7 +60,7 @@
         android:fontFamily="@font/nunito_extrabold"
         android:padding="15dp"
         android:text="ingresar"
-        android:textColor="@color/indentityColorTwo" />
+        android:textColor="@color/nav_item_color" />
 
 
     <LinearLayout

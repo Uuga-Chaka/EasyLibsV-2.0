@@ -6,6 +6,7 @@ public class User {
     public boolean hasBooking;
     public int inicio, fin;
     public String lugar;
+    public String email;
 
     public User(){}
 

@@ -8,16 +8,16 @@ public class Coordenada {
     public String ids;
     public int inicio, fin;
     public boolean hasReserva;
+    public String filter;
 
     public Coordenada() {
 
     }
 
-    public Coordenada(int x, int y, int state, String ids, boolean hasReserva) {
+    public Coordenada(int x, int y, int state, boolean hasReserva) {
         this.x = x;
         this.y = y;
         this.state = state;
-        this.ids = ids;
         this.inicio = inicio;
         this.fin = fin;
         this.hasReserva = hasReserva;

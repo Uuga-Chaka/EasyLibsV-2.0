@@ -56,7 +56,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         if (v == btn_register) {
 
             // filtros de validación de contraseña y usuario
-            String email = et_email.getText().toString().trim();
+            final String email = et_email.getText().toString().trim();
             String password = et_pass.getText().toString().trim();
             String repass = et_repass.getText().toString().trim();
 
@@ -104,6 +104,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                         User us = new User();
                         us.hasBooking = false;
                         us.uid = uid;
+                        us.email = email;
                         ref.child(uid).setValue(us);
                         startActivity(new Intent(Register.this, MainActivity.class));
                         finish();

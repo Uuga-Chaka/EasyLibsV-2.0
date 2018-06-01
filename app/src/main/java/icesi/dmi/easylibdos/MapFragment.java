@@ -26,14 +26,15 @@ import java.util.Calendar;
 public class MapFragment extends Fragment implements View.OnTouchListener {
 
     int[] pos;
+    String[] filter;
     private Mapa mapa;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference ref = db.getReference().child("Bibliotech").child("Universidades").child("Icesi");
     Coordenada refCoordenada;
 
     //posiciones random para poder poblar el mapa
-    /* int x = Resources.getSystem().getDisplayMetrics().widthPixels;
-    int y = Resources.getSystem().getDisplayMetrics().heightPixels;*/
+    int x = Resources.getSystem().getDisplayMetrics().widthPixels;
+    int y = Resources.getSystem().getDisplayMetrics().heightPixels;
 
 
     public MapFragment() {
@@ -47,6 +48,8 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
 
         mapa = (Mapa) root.findViewById(R.id.mapita);
 
+        filter = new String[]{"Tablero", "Ethernet", "Marcador", "Mesa", "Enchufe"};
+
 
         int[] location = new int[2];
         container.getLocationInWindow(location);
@@ -55,13 +58,19 @@ public class MapFragment extends Fragment implements View.OnTouchListener {
         mapa.setOnTouchListener(this);
 
         //poblar mapa con posiciones random
-        /*for(int i = 0; i<20;i++){
-            float xx = (float)Math.random()* x;
-            float yy = (float)Math.random()* y;
+        /*for (int e = 0; e < 3; e++) {
+            for (int i = 0; i < 20; i++) {
+                float xx = (float) Math.random() * x;
+                float yy = (float) Math.random() * y;
+                float f = (float) Math.random() * 5;
+                int idd = i + (20 * e);
 
-            Coordenada c = new Coordenada((int)xx,(int)yy,0, String.valueOf(i),false);
-            ref.child(String.valueOf(i)).setValue(c);
-        }*/
+                Coordenada c = new Coordenada(40 + (50 * e), 40 + (50 * i), 0,  false);
+                c.ids = String.valueOf(idd);
+                c.filter = filter[(int) f];
+                ref.child(String.valueOf(idd)).setValue(c);
+            }
+        } */
 
 
         ref.addValueEventListener(new ValueEventListener() {

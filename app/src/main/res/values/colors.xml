@@ -8,6 +8,16 @@
     <color name="indentityColorTwo">#82a2d3</color>
     <color name="hintColor">#FFFFFF</color>
     <color name="inputColor">#80f2f2f2</color>
+    <color name="textoTitulo">#9d99e3</color>
+    <color name="textoNormal">#969696</color>
+    <color name="amarillo">#fff18b</color>
+    <color name="verde">#92ddBd</color>
+    <color name="rojo">#ff6c6c</color>
+    <!-- #9d99e3
+     #969696
+      #92ddBd verde
+      #ff6c6c rojo
+      #fff18b amarillo-->
 
     <integer-array name="androidcolors">
         <item>@color/colorClick</item>

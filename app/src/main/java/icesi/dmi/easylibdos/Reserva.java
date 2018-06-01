@@ -1,6 +1,8 @@
 package icesi.dmi.easylibdos;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Reserva extends AppCompatActivity {
 
@@ -92,14 +98,17 @@ public class Reserva extends AppCompatActivity {
                 c = dataSnapshot.getValue(Coordenada.class);
 
                 if (c.state == 0) {
+                    tv_status.setTextColor(ContextCompat.getColor(Reserva.this,R.color.verde));
                     color = "Libre";
                 } else if (c.state == 1) {
+                    tv_status.setTextColor(ContextCompat.getColor(Reserva.this,R.color.rojo));
                     color = "Ocupado";
                 } else {
+                    tv_status.setTextColor(ContextCompat.getColor(Reserva.this,R.color.amarillo));
                     color = "Reservado";
                 }
                 tv_status.setText(color);
-                tv_id.setText(c.ids);
+                tv_id.setText("Cubiculo: " + c.ids);
             }
 
             @Override
@@ -114,6 +123,10 @@ public class Reserva extends AppCompatActivity {
                 int in = Integer.parseInt(et_inicio.getText().toString().trim());
                 int fi = Integer.parseInt(et_final.getText().toString().trim());
 
+                Calendar calendar = GregorianCalendar.getInstance();
+                Date date = new Date();
+                calendar.setTime(date);
+
                 Toast.makeText(Reserva.this, et_inicio.getText().toString().trim() + " " + et_final.getText().toString().trim(), Toast.LENGTH_LONG).show();
                 if (!hasBooking) {
                     //Puede reservar
@@ -125,6 +138,11 @@ public class Reserva extends AppCompatActivity {
 
                     if (fi > 24 || in > 24 || fi < 0 || in < 0) {
                         Toast.makeText(Reserva.this, "Hora no valida", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    if (fi < calendar.get(Calendar.HOUR_OF_DAY)) {
+                        Toast.makeText(Reserva.this, "Esta hora ya pasó", Toast.LENGTH_LONG).show();
                         return;
                     }
 
@@ -142,7 +160,7 @@ public class Reserva extends AppCompatActivity {
                     userdb.setValue(us);
                 } else {
                     //no puede reservar
-                    // Toast.makeText(Reserva.this, "Actualmente tiene una reserva activa", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Reserva.this, "Actualmente tiene una reserva activa", Toast.LENGTH_LONG).show();
                 }
             }
         });

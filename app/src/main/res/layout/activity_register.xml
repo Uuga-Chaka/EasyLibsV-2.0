@@ -76,5 +76,5 @@
         android:fontFamily="@font/nunito_extrabold"
         android:padding="15dp"
         android:text="registrarme"
-        android:textColor="@color/indentityColorTwo" />
+        android:textColor="@color/nav_item_color" />
 </LinearLayout>
