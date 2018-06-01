@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="Time left for la reserva"
+            android:id="@+id/tv_text"
             android:layout_marginTop="25dp"/>
         <TextView
             android:layout_width="match_parent"

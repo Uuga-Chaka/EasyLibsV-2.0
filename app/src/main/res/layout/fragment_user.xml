@@ -15,42 +15,61 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/googleg_standard_color_18"
-            android:layout_marginTop="150dp"/>
+            android:layout_marginTop="150dp"
+            android:src="@drawable/googleg_standard_color_18" />
 
         <TextView
+            android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="User name"
-            android:textSize="20sp"
-            android:id="@+id/tv_username"/>
+            android:textColor="@color/nav_item_color"
+            android:textSize="20sp" />
+
         <TextView
+            android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email"
-            android:id="@+id/tv_email"/>
+            android:textColor="@color/nav_item_color" />
 
         <Button
-            android:layout_width="250dp"
+            android:id="@+id/btn_reserva"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/btn_selector"
+            android:fontFamily="@font/nunito_extrabold"
+            android:padding="15dp"
             android:text="Reservar ahora"
-            android:id="@+id/btn_reserva"/>
+            android:textColor="@color/indentityColorTwo" />
 
 
         <Button
-            android:layout_width="250dp"
+            android:id="@+id/btn_logout"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_selector"
+            android:fontFamily="@font/nunito_extrabold"
+            android:padding="15dp"
             android:text="Logout"
-            android:id="@+id/btn_logout"/>
+            android:textColor="@color/indentityColorTwo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20pt"
             android:fontFamily="@font/nunito_extrabold"
-            android:text="Services" />
+            android:text="Services"
+            android:textColor="@color/nav_item_color" />
 
 
     </LinearLayout>

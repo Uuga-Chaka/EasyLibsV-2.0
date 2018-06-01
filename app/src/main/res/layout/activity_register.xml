@@ -20,15 +20,15 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginTop="100sp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/et_style"
         android:drawablePadding="10sp"
         android:drawableStart="@drawable/ic_user"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:letterSpacing=".1"
         android:padding="7dp"
-        android:textColor="@color/inputColor"
-        android:textColorHint="@color/hintColor" />
+        android:textColor="@color/hintColor"
+        android:textColorHint="@color/inputColor" />
 
     <EditText
         android:id="@+id/et_pass"
@@ -37,15 +37,15 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/et_style"
         android:drawablePadding="10sp"
         android:drawableStart="@drawable/ic_password"
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:letterSpacing=".1"
         android:padding="7dp"
-        android:textColor="@color/inputColor"
-        android:textColorHint="@color/hintColor" />
+        android:textColor="@color/hintColor"
+        android:textColorHint="@color/inputColor" />
 
     <EditText
         android:id="@+id/et_repass"
@@ -54,15 +54,15 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/et_style"
         android:drawablePadding="10sp"
         android:drawableStart="@drawable/ic_password"
         android:hint="Repetir contraseña"
         android:inputType="textPassword"
         android:letterSpacing=".1"
         android:padding="7dp"
-        android:textColor="@color/inputColor"
-        android:textColorHint="@color/hintColor" />
+        android:textColor="@color/hintColor"
+        android:textColorHint="@color/inputColor" />
 
     <Button
         android:id="@+id/btn_registe"

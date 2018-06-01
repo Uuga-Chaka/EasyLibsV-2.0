@@ -23,8 +23,10 @@ public class ReservaAhora extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
-    DatabaseReference ref = db.getReference().child("Bibliotech").child("Users").child("Icesi");
-    EditText et_inicio, et_final;
+    DatabaseReference ref, refD;
+    EditText et_inicio, et_final, et_code;
+
+    User us;
 
     Button btn_reserva;
     boolean hasBooking;
@@ -36,8 +38,10 @@ public class ReservaAhora extends AppCompatActivity {
 
         et_inicio = findViewById(R.id.et_inicio);
         et_final = findViewById(R.id.et_fin);
+        et_code = findViewById(R.id.et_code);
 
-
+        refD = db.getReference().child("Bibliotech").child("Universidades").child("Icesi");
+        ref = db.getReference().child("Bibliotech").child("Users").child("Icesi");
         hasBooking = false;
 
         btn_reserva = (Button) findViewById(R.id.btn_reserva);
@@ -57,7 +61,7 @@ public class ReservaAhora extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                User us = dataSnapshot.getValue(User.class);
+                us = dataSnapshot.getValue(User.class);
 
                 hasBooking = us.hasBooking;
 
@@ -73,7 +77,8 @@ public class ReservaAhora extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                User us = new User();
+                Coordenada c = new Coordenada();
+
                 if (!hasBooking) {
                     //Puede reservar
                     int in = Integer.parseInt(et_inicio.getText().toString());
@@ -91,7 +96,14 @@ public class ReservaAhora extends AppCompatActivity {
                     us.inicio = in;
                     us.fin = fi;
                     us.hasBooking = true;
+                    //Variables para el lugar
+                    c.inicio = in;
+                    c.fin = fi;
+                    c.hasReserva = true;
+                    c.state = 2;
+                    c.ids = et_code.getText().toString().trim();
 
+                    refD.child(et_code.getText().toString().trim()).setValue(c);
                     ref.setValue(us);
                 } else {
                     //no puede reservar

@@ -4,7 +4,8 @@ public class User {
 
     public String uid;
     public boolean hasBooking;
-    int inicio, fin;
+    public int inicio, fin;
+    public String lugar;
 
     public User(){}
 
