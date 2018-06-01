@@ -93,47 +93,49 @@ public class NotifyFragment extends Fragment {
             public void run() {
 
                 //Una machetada de timer
+                if (hasBooking) {
 
-                Calendar calendar = GregorianCalendar.getInstance();
-                Date date = new Date();
-                calendar.setTime(date);
-                float currentTime = (Calendar.HOUR_OF_DAY + (calendar.get(Calendar.MINUTE) / 60));
+                    Calendar calendar = GregorianCalendar.getInstance();
+                    Date date = new Date();
+                    calendar.setTime(date);
+                    float currentTime = (Calendar.HOUR_OF_DAY + (calendar.get(Calendar.MINUTE) / 60));
 
-                if (!reservaStarted && currentTime > horaInicio && currentTime < horaTerminacion)
-                    reservaStarted = true;
-                else if (reservaStarted && currentTime > horaTerminacion) {
-                    c.hasReserva = false;
-                    c.state = 0;
-                    c.inicio = 0;
-                    c.fin = 0;
-                    lib.setValue(c);
+                    if (!reservaStarted && currentTime > horaInicio && currentTime < horaTerminacion)
+                        reservaStarted = true;
+                    else if (reservaStarted && currentTime > horaTerminacion) {
+                        c.hasReserva = false;
+                        c.state = 0;
+                        c.inicio = 0;
+                        c.fin = 0;
+                        lib.setValue(c);
+                    }
+
+
+                    if (!reservaStarted) {
+                        horaFaltante = horaInicio - calendar.get(Calendar.HOUR_OF_DAY);
+                        minReserva = 60 - calendar.get(Calendar.MINUTE);
+                        prueba++;
+                        reservaStarted = true;
+                        tv_text.setText("Tu reserva empieza en:");
+                    } else {
+                        horaFaltante = horaTerminacion - calendar.get(Calendar.HOUR_OF_DAY);
+                        minReserva = 60 - calendar.get(Calendar.MINUTE);
+                        tv_text.setText("Tu reserva termina en:");
+                    }
+
+                    String m;
+                    String h = String.valueOf(horaFaltante);
+                    if (minReserva < 10) {
+                        m = String.valueOf("0" + minReserva);
+                    } else {
+                        m = String.valueOf(minReserva);
+                    }
+                    String s = String.valueOf(calendar.get(Calendar.SECOND));
+
+                    tv_timer.setText(h + ":" + m + ":" + s);
+
+                    hd.postDelayed(this, 1000);
                 }
-
-
-                if (!reservaStarted) {
-                    horaFaltante = horaInicio - calendar.get(Calendar.HOUR_OF_DAY);
-                    minReserva = 60 - calendar.get(Calendar.MINUTE);
-                    prueba++;
-                    reservaStarted = true;
-                    tv_text.setText("Tu reserva empieza en:");
-                } else {
-                    horaFaltante = horaTerminacion - calendar.get(Calendar.HOUR_OF_DAY);
-                    minReserva = 60 - calendar.get(Calendar.MINUTE);
-                    tv_text.setText("Tu reserva termina en:");
-                }
-
-                String m;
-                String h = String.valueOf(horaFaltante);
-                if (minReserva < 10) {
-                    m = String.valueOf("0" + minReserva);
-                } else {
-                    m = String.valueOf(minReserva);
-                }
-                String s = String.valueOf(calendar.get(Calendar.SECOND));
-
-                tv_timer.setText(h + ":" + m + ":" + s);
-
-                hd.postDelayed(this, 1000);
             }
         };
 
@@ -159,6 +161,7 @@ public class NotifyFragment extends Fragment {
         });
 
         if (hasBooking) {
+            Toast.makeText(getContext(),"hasBooking",Toast.LENGTH_LONG).show();
             lib = db.getReference().child("Bibliotech").child("Universidades").child("Icesi").child(lugar);
             lib.addValueEventListener(new ValueEventListener() {
                 @Override
